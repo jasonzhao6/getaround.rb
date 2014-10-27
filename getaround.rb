@@ -2,14 +2,14 @@
 # INSTANT_ONLY = true
 # MANUALS_ONLY = true
 # CONVERTIBLES_ONLY = true
-# FOR_JASON_ONLY = true
-# START_TIME = Time.local(2014,8,31,10,00)
-# END_TIME = Time.local(2014,8,31,15,00)
+FOR_JASON_ONLY = true
+START_TIME = Time.local(2014,11,14,18,00)
+END_TIME = Time.local(2014,11,15,18,00)
 MAX_AGE = 6
 MIN_PRICE = 70
 blacklisted_ids = []
 blacklisted_ids += [
-  # Driven
+  # Driven $1711
   '100004025651186', # '13 GTI $62
   '100003967135212', # '08 S2000 $91 + $137
   '100004027211186', # '14 Z435i $251
@@ -18,6 +18,7 @@ blacklisted_ids += [
   '100004140221190', # '13 STI $201
   '100004263631187', # '14 C7 Stingray $266
   '100004027131187', # '14 911 $301
+  '100004298771185', # '10 R8 $781
 ] + [
   # Too far
   '100003954075479', # Golf R
@@ -30,7 +31,7 @@ blacklisted_ids += [
 ] if defined?(FOR_JASON_ONLY) && FOR_JASON_ONLY
 blacklisted_ids += [
   # Slow cars
-  '100004150081185', '100004134231186', '100004146891185', '100004132181185', '100004132611185', '4103', '100004127791189', '100004112391187', '100003941273687', '100004091281185', '100003945196933', '100004059181185', '100003941496344', '100004084441185', '100004094671187', '2901', '100004094511189', '100003962361285', '100004021201185', '100004042451193', '100004045911191'
+  '100004326751185', '100004150081185', '100004134231186', '100004146891185', '100004132181185', '100004132611185', '4103', '100004127791189', '100004112391187', '100003941273687', '100004091281185', '100003945196933', '100004059181185', '100003941496344', '100004084441185', '100004094671187', '2901', '100004094511189', '100003962361285', '100004021201185', '100004042451193', '100004045911191'
 ] + [
   # No response
   '100004136251186', '100004199511185', '100004221691185', '100004135761186', '100004095661187', '100004064921187', '100004062531189', '100003954090380', '100004079111185', '100004042281187', '100004032221185', '100003977437187', '100004039311186'
@@ -117,6 +118,7 @@ blacklisted_models += [
   'Fit',
   'FJ Cruiser',
   'Forester',
+  'Forte',
   'fortwo',
   'Fusion',
   'G6',
@@ -127,14 +129,15 @@ blacklisted_models += [
   'Insight',
   'iQ',
   'IS 250',
-  'Jetta',
   'Jetta SportWagen',
+  'Jetta',
   'Journey',
   'Juke',
   'Leaf',
   'M-Class',
   'M35',
   'Malibu',
+  'Matrix',
   'MAZDA6',
   'MKT',
   'Murano',
@@ -235,9 +238,11 @@ cars.each do |car|
   price = "$#{car['price_daily'][0..-4].ljust(6)}"
   year = "'#{car['year'][2..-1]}"
   make_model = "#{car['make']} #{car['model']}".ljust(30)
-  url = "http://www.getaround.com/_?carid=#{car['car_id']}"
-  is_instant = 'instant' if car['instant_rental']
+  url = "http://www.getaround.com/#{car['car_name'].ljust(25)}"
+  car_id = car['car_id'].ljust(20)
   has_carkit = 'carkit' if car['carkit_enabled']
+  is_instant = 'instant' if car['instant_rental']
 
-  puts "#{price} #{year} #{make_model} #{url} #{has_carkit} #{is_instant}"
+
+  puts "#{price} #{year} #{make_model} #{url} #{car_id} #{has_carkit} #{is_instant}"
 end
