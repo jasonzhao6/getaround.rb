@@ -9,7 +9,7 @@ MAX_AGE = 6
 MIN_PRICE = 70
 blacklisted_ids = []
 blacklisted_ids += [
-  # Driven $1711
+  # Driven
   '100004025651186', # '13 GTI $62
   '100003967135212', # '08 S2000 $91 + $137
   '100004027211186', # '14 Z435i $251
@@ -20,10 +20,11 @@ blacklisted_ids += [
   '100004027131187', # '14 911 Cab $301
   '100004298771185', # '10 R8 $781
   '100004317911185', # '11 M3 $160
+  '100004392791188', # '09 Cayman $136
 ] if defined?(FOR_JASON_ONLY) && FOR_JASON_ONLY
 blacklisted_ids += [
   # Slow cars
-  '100004374351186', '100004326751185', '100004150081185', '100004134231186', '100004146891185', '100004132181185', '100004132611185', '4103', '100004127791189', '100004112391187', '100003941273687', '100004091281185', '100003945196933', '100004059181185', '100003941496344', '100004084441185', '100004094671187', '2901', '100004094511189', '100003962361285', '100004021201185', '100004042451193', '100004045911191'
+  '100004411161186', '100004031701189', '100004276821186', '100004427591185', '100004108281186', '100004429301185', '100004374351186', '100004326751185', '100004150081185', '100004134231186', '100004146891185', '100004132181185', '100004132611185', '4103', '100004127791189', '100004112391187', '100003941273687', '100004091281185', '100003945196933', '100004059181185', '100003941496344', '100004084441185', '100004094671187', '2901', '100004094511189', '100003962361285', '100004021201185', '100004042451193', '100004045911191'
 ] + [
   # Too far
   '100003954075479', # Golf R
@@ -43,6 +44,7 @@ blacklisted_models += [
   '1 Series',
   '3 Series',
   '5 Series',
+  '7 Series',
   '500',
   'A3',
   'A4',
@@ -65,15 +67,12 @@ blacklisted_models += [
   'G37',
   'Golf',
   'GS 450h',
-  'GTI',
   'Impreza',
   'IS 250 C',
   'IS 350',
   'MAZDA3',
   'Model S',
   'Mustang',
-  'Range Rover Sport',
-  'Range Rover',
   'Veloster',
   'Z4',
 ] if defined?(FOR_JASON_ONLY) && FOR_JASON_ONLY
@@ -117,17 +116,21 @@ blacklisted_models += [
   'Escape',
   'Expedition',
   'Explorer Sport Trac',
+  'Explorer',
   'Fit EV',
   'Fit',
   'FJ Cruiser',
   'Forester',
   'Forte',
   'fortwo',
+  'Frontier',
   'Fusion',
   'G6',
   'GL-Class',
   'GLK-Class',
   'Grand Cherokee',
+  'Highlander Hybrid',
+  'Highlander',
   'ILX',
   'Insight',
   'iQ',
@@ -137,6 +140,8 @@ blacklisted_models += [
   'Journey',
   'Juke',
   'Leaf',
+  'Legacy',
+  'LR3',
   'M-Class',
   'M35',
   'Malibu',
@@ -159,6 +164,7 @@ blacklisted_models += [
   'Q50',
   'Quest',
   'QX56',
+  'R-Class',
   'RAV4',
   'RDX',
   'Ridgeline',
@@ -170,9 +176,12 @@ blacklisted_models += [
   'Sebring',
   'Sentra',
   'Sienna',
+  'Silverado 2500HD',
   'Sonata Hybrid',
   'Sonata',
+  'Sorento',
   'Spectra',
+  'Sportage',
   'Sprinter',
   'Tacoma',
   'Tahoe',
@@ -181,6 +190,7 @@ blacklisted_models += [
   'Tiguan',
   'TL',
   'Touareg',
+  'Town and Country',
   'Transit Connect',
   'Tribeca',
   'TSX',
@@ -205,7 +215,7 @@ require 'json'
 # Validate
 if defined?(START_TIME) && defined?(END_TIME)
   DAY_IN_SECONDS = 60 * 60 * 24
-  DAYS_ALLOWED_BY_SEARCH = 40
+  DAYS_ALLOWED_BY_SEARCH = 50
   days_ahead = ((END_TIME - Time.now) / DAY_IN_SECONDS).round
   if days_ahead > DAYS_ALLOWED_BY_SEARCH
     p "ERROR: Checking #{days_ahead} days into the future. Limit is #{DAYS_ALLOWED_BY_SEARCH} days."
