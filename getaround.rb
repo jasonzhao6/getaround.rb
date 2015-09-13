@@ -28,6 +28,7 @@ blacklisted_ids += [
 ] if defined?(FOR_JASON_ONLY) && FOR_JASON_ONLY
 blacklisted_ids += [
   # Slow cars
+  '100004609771188', '100004594961185', '100004777871186', '100004546161185', '100004842861186', '100004788341189', '100004578951186', '100004718411185', '100004658401185', '100004630941185', '100004863751185', '100004822811185', '100004805891190', '100004052731187', '100004645451185',
   '100004454341186', '100004411161186', '100004031701189', '100004276821186', '100004427591185', '100004108281186', '100004429301185', '100004374351186', '100004326751185', '100004150081185', '100004134231186', '100004146891185', '100004132181185', '100004132611185', '4103', '100004127791189', '100004112391187', '100003941273687', '100004091281185', '100003945196933', '100004059181185', '100003941496344', '100004084441185', '100004094671187', '2901', '100004094511189', '100003962361285', '100004021201185', '100004042451193', '100004045911191'
 ] + [
   # Too expensive
@@ -54,11 +55,12 @@ blacklisted_models += [
   '370Z',
   '4 Series',
   '5 Series',
-  '7 Series',
   '500',
+  '7 Series',
   'A3',
   'A4',
   'A6',
+  'ActiveHybrid 5',
   'C-Class',
   'Camaro',
   'Cayman',
@@ -164,10 +166,12 @@ blacklisted_models += [
   'GL-Class',
   'GLA-Class',
   'GLK-Class',
+  'Golf SportWagen',
   'Golf',
   'Grand Caravan',
   'Grand Cherokee',
   'GS 300',
+  'GX 460',
   'Highlander Hybrid',
   'Highlander',
   'ILX',
@@ -190,6 +194,7 @@ blacklisted_models += [
   'MAZDA3',
   'Mazda3',
   'MAZDA5',
+  'Mazda5',
   'MAZDA6',
   'Mazda6',
   'MDX',
@@ -216,6 +221,7 @@ blacklisted_models += [
   'Quest',
   'QX56',
   'R-Class',
+  'Rabbit',
   'Ram Pickup 1500',
   'Ram Pickup 2500',
   'Ranger',
@@ -251,6 +257,7 @@ blacklisted_models += [
   'Terraza',
   'Tiguan',
   'TL',
+  'Touareg 2',
   'Touareg',
   'Town and Country',
   'Transit Connect',
@@ -317,11 +324,8 @@ cars.each do |car|
   price = "$#{car['price_daily'][0..-4].ljust(6)}"
   year = "'#{car['year'][2..-1]}"
   make_model = "#{car['make']} #{car['model']}".ljust(30)
-  url = "http://www.getaround.com/#{car['car_name'].ljust(25)}"
+  url = "getaround.com/#{car['car_name'].ljust(25)}"
   car_id = car['car_id'].ljust(20)
-  has_carkit = 'carkit' if car['carkit_enabled']
-  is_instant = 'instant' if car['instant_rental']
 
-
-  puts "#{price} #{year} #{make_model} #{url} #{car_id} #{has_carkit} #{is_instant}"
+  puts "#{price} #{year} #{make_model} #{url} #{car_id}"
 end
