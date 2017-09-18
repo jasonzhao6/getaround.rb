@@ -2,9 +2,9 @@
 # MANUALS_ONLY = true
 # CONVERTIBLES_ONLY = true
 FOR_JASON_ONLY = true
-START_TIME = Time.local(2017,8,5,5,00)
-END_TIME = Time.local(2017,8,6,5,00)
-MAX_AGE = 10
+# START_TIME = Time.local(2017,9,16,4,00)
+# END_TIME = Time.local(2017,9,17,4,00)
+# MAX_AGE = 20
 MIN_PRICE = 64
 blacklisted_ids = []
 blacklisted_ids += [
@@ -28,6 +28,7 @@ blacklisted_ids += [
   '100006771391185', # '15 RC F $99 * 2
   '100006895741187', # '16 S6 $155
   '100006568961185', # '14 F Type $256
+  '100005063411185', # '16 MX-5 $176
 ] if defined?(FOR_JASON_ONLY) && FOR_JASON_ONLY
 blacklisted_ids += [
   # Slow cars
@@ -216,12 +217,14 @@ blacklisted_models += [
   'Grand Cherokee',
   'GS 300',
   'GX 460',
+  'HHR',
   'Highlander Hybrid',
   'Highlander',
   'HR-V',
   'iA',
   'ILX',
   'iM',
+  'Impala Limited',
   'Impala',
   'Insight',
   'iQ',
@@ -282,6 +285,7 @@ blacklisted_models += [
   'Q50',
   'Q7',
   'Quest',
+  'QX30',
   'QX50',
   'QX56',
   'R-Class',
@@ -398,7 +402,7 @@ cars = json['cars']
 cars = cars.reject { |car| blacklisted_ids.include?(car['car_id']) }
 cars = cars.reject { |car| blacklisted_models.include?(car['model']) }
 cars = cars.select { |car| car['price_daily'].to_i >= MIN_PRICE }
-cars = cars.select { |car| car['year'].to_i >= Time.now.year - MAX_AGE }
+cars = cars.select { |car| car['year'].to_i >= Time.now.year - MAX_AGE } if defined?(MAX_AGE)
 
 # Sort
 cars = cars.sort_by { |car| [car['price_daily'].to_i, car['year'].to_i] }
