@@ -29,6 +29,7 @@ blacklisted_ids += [
   '100006895741187', # '16 S6 $155
   '100006568961185', # '14 F Type $256
   '100005063411185', # '16 MX-5 $176
+  '100007102271186', # '15 Mustang GT $114
 ] if defined?(FOR_JASON_ONLY) && FOR_JASON_ONLY
 blacklisted_ids += [
   # Slow cars
