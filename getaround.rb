@@ -9,10 +9,12 @@ MIN_PRICE = 64
 blacklisted_ids = []
 blacklisted_ids += [
   # Ranked list
+  # 'Not GetAround', # '18 M3 Friend
   # 'Not GetAround', # '07 F430 Spider $996 / 2
   '100004263631187', # '14 C7 Z51 $266
   '100003967135212', # '08 S2000 $91 + $137
   # 'Not GetAround', # '16 911 GT3 $996 / 2
+  # 'Not GetAround', # '18 911 GTS Friend
   '100004392791188', # '09 Cayman $136
   '100004298771185', # '10 R8 V8 $781
   '100004027131187', # '14 911 Cabriolet $301
